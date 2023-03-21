@@ -26,5 +26,8 @@ SELECT * FROM CLIENTES WHERE Id = 1;
 -- Ex 5 - Selecione os clientes por nome Utilizando Like
 SELECT * FROM CLIENTES WHERE Nome LIKE '%V%';
 
+-- Ex 6 - Crie um Script para atualizar um cliente
+UPDATE CLIENTES SET Endereco = 'Rua do Limão' WHERE Nome = 'Marcus Vinicius';
+
 
 
