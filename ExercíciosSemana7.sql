@@ -29,5 +29,6 @@ SELECT * FROM CLIENTES WHERE Nome LIKE '%V%';
 -- Ex 6 - Crie um Script para atualizar um cliente
 UPDATE CLIENTES SET Endereco = 'Rua do Limão' WHERE Nome = 'Marcus Vinicius';
 
-
+-- Ex 7 - Crie o Script para excluir um cliente
+DELETE CLIENTES WHERE Id = 2;
 
