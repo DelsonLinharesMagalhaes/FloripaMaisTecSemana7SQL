@@ -32,3 +32,45 @@ UPDATE CLIENTES SET Endereco = 'Rua do Limão' WHERE Nome = 'Marcus Vinicius';
 -- Ex 7 - Crie o Script para excluir um cliente
 DELETE CLIENTES WHERE Id = 2;
 
+-- Ex 8 - Normalize a tabela Funcionarios até sua terceira forma normal
+CREATE TABLE CARGOS(Id INT PRIMARY KEY IDENTITY(1,1),
+					CARGO VARCHAR(30));
+
+INSERT INTO CARGOS(CARGO) VALUES ('Atendente'),
+								('Gerente');
+
+SELECT * FROM CARGOS
+
+
+CREATE TABLE FUNCIONARIOS(Id INT PRIMARY KEY IDENTITY(1,1),
+					Nome VARCHAR(50),
+					Id_Cargos INT REFERENCES CARGOS(Id));
+
+INSERT INTO FUNCIONARIOS(Nome, Id_Cargos) VALUES ('Marcos',1),('Maria',2),('Julia',1);
+
+SELECT * FROM FUNCIONARIOS;
+
+SELECT*FROM FUNCIONARIOS
+JOIN CARGOS ON CARGOS.Id=FUNCIONARIOS.Id_Cargos;
+
+
+CREATE TABLE TELEFONES(Id_Funcionarios INT REFERENCES FUNCIONARIOS(Id),
+					Telefone VARCHAR(11));
+
+
+
+INSERT INTO TELEFONES (Id_Funcionarios, Telefone) VALUES (1,'3654589'),
+														(1,'36545987'),
+														(2,'3654698'),
+														(2,'36524569'),
+														(3,'3654962'),
+														(3,'12365458');
+
+SELECT * FROM TELEFONES;
+
+SELECT*FROM FUNCIONARIOS
+JOIN CARGOS ON CARGOS.Id=FUNCIONARIOS.Id_Cargos
+JOIN TELEFONES ON TELEFONES.Id_Funcionarios=FUNCIONARIOS.Id;
+
+
+
